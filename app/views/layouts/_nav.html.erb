@@ -8,9 +8,11 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><%= link_to 'Chapters', chapters_path, class: 'nav-link' %></li>
 
           <% if logged_in? %>
             <li class="nav-item"><%= link_to current_user.full_name, current_user, class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to 'My Chapter', current_user.chapter, class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'Log out', '/logout', method: :delete, class: 'nav-link' %></li>
           <% else %>
             <li class="nav-item"><%= link_to 'Sign up', new_user_path, class: 'nav-link' %></li>

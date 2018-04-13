@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180412205534) do
   end
 
   create_table "chapters", force: :cascade do |t|
-    t.string "type"
+    t.string "greek_type"
     t.string "name"
     t.string "chapter_name"
     t.datetime "created_at", null: false

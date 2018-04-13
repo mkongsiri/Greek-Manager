@@ -1,34 +1,32 @@
-<p id="notice"><%= notice %></p>
+<% if current_user.email == @user.email %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+  <p>
+    <strong>First name:</strong>
+    <%= @user.first_name %>
+  </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  <p>
+    <strong>Last name:</strong>
+    <%= @user.last_name %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
 
-<p>
-  <strong>Password hash:</strong>
-  <%= @user.password_hash %>
-</p>
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role %>
+  </p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+  <p>
+    <strong>Chapter:</strong>
+    <%= "#{@user.chapter.name} - #{@user.chapter.chapter_name}" %>
+  </p>
 
-<p>
-  <strong>Chapter:</strong>
-  <%= @user.chapter %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+<% else %>
+  <% controller.redirect_to root_path %>
+<% end %>

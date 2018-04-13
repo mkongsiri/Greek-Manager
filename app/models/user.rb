@@ -1,6 +1,8 @@
 require 'bcrypt'
 
 class User < ApplicationRecord
+  include BCrypt
+
   belongs_to :chapter
 
   has_many :attendance_signups, dependent: :destroy
