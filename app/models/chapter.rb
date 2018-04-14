@@ -3,4 +3,8 @@ class Chapter < ApplicationRecord
   has_many :users, dependent: :destroy
 
   validates :greek_type, :name, :chapter_name, presence: true
+
+  def members
+    User.where(chapter: self)
+  end
 end

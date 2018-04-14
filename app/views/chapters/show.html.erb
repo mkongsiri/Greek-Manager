@@ -14,3 +14,25 @@
   <strong>Chapter name:</strong>
   <%= @chapter.chapter_name %>
 </p>
+
+<p>
+  <strong>Members:</strong>
+  <table>
+    <thead>
+      <tr>
+        <th class="table-dark bg-primary">Name</th>
+        <th class="table-dark bg-primary">Email</th>
+        <th class="table-dark bg-primary">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @chapter.members.each do |user| %>
+        <tr>
+          <td><%= user.full_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
