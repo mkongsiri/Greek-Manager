@@ -25,6 +25,10 @@ class User < ApplicationRecord
     self.password_hash = @password
   end
 
+  def events
+    AttendanceSignup.where(user: self)
+  end
+
   private
 
   def first_capitalized

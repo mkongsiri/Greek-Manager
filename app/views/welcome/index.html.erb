@@ -10,8 +10,26 @@
   <div class="row">
     <div class="col-lg-6 offset-lg-3">
       <h6>Events Dashboard</h6>
-
-
+      <table>
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Event Type</th>
+            <th>Date</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.events.each do |event| %>
+            <tr>
+              <td><%= event.event.name %></td>
+              <td><%= event.event.event_type %></td>
+              <td><%= event.event.date %></td>
+              <td><%= link_to 'Show', chapter_event_path(current_user.chapter, event.event) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 <% else %>
