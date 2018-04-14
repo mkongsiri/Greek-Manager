@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :type %>
-    <%= form.text_field :greek_type, id: :chapter_greek_type %>
+    <%= select('chapter', 'greek_type', ["Fraternity", "Sorority"]) %>
   </div>
 
   <div class="field">
