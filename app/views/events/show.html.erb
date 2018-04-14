@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Chapter:</strong>
-  <%= @event.chapter %>
-</p>
-
-<p>
   <strong>Type:</strong>
-  <%= @event.type %>
+  <%= @event.event_type %>
 </p>
 
 <p>
@@ -30,5 +25,5 @@
   <%= @event.notes %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Edit', edit_chapter_event_path(@event) %> |
+<%= link_to 'Back', chapter_events_path %>

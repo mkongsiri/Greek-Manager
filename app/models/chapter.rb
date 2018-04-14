@@ -7,4 +7,8 @@ class Chapter < ApplicationRecord
   def members
     User.where(chapter: self)
   end
+
+  def events
+    Event.where(chapter: self)
+  end
 end
