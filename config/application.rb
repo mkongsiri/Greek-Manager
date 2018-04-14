@@ -24,5 +24,11 @@ module GreekManager
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.generators do |g|
+      g.jbuilder false
+      g.test_framework false
+      g.assets false
+      g.helper false
+    end
   end
 end
