@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :chapters do
-    resources :events
+    resources :events do
+      get '/signup', to: 'attendance_signups#create'
+      delete '/signup', to: 'attendance_signups#destroy'
+    end
   end
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

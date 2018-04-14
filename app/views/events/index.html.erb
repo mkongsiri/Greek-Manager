@@ -10,7 +10,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Notes</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -22,6 +22,11 @@
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.notes %></td>
+        <% if AttendanceSignup.exists?(user: current_user) %>
+          <td><%= link_to 'Cancel Sign Up', chapter_event_signup_path(@chapter, event), method: :delete %></td>
+        <% else %>
+          <td><%= link_to 'Sign Up', chapter_event_signup_path(@chapter, event) %></td>
+        <% end %>
         <td><%= link_to 'Show', chapter_event_path(@chapter, event) %></td>
         <td><%= link_to 'Edit', edit_chapter_event_path(@chapter, event) %></td>
         <td><%= link_to 'Destroy', chapter_event_path(@chapter, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>

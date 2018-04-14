@@ -1,0 +1,2 @@
+module AttendanceSignupHelper
+end
