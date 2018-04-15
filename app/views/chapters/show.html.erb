@@ -1,38 +1,42 @@
-<p id="notice"><%= notice %></p>
+<% if current_user.chapter == @chapter %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @chapter.greek_type %>
-</p>
+  <p>
+    <strong>Type:</strong>
+    <%= @chapter.greek_type %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @chapter.name %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @chapter.name %>
+  </p>
 
-<p>
-  <strong>Chapter name:</strong>
-  <%= @chapter.chapter_name %>
-</p>
+  <p>
+    <strong>Chapter name:</strong>
+    <%= @chapter.chapter_name %>
+  </p>
 
-<p>
-  <strong>Members:</strong>
-  <table>
-    <thead>
-      <tr>
-        <th class="table-dark bg-primary">Name</th>
-        <th class="table-dark bg-primary">Email</th>
-        <th class="table-dark bg-primary">Role</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @chapter.members.each do |user| %>
+  <p>
+    <strong>Members:</strong>
+    <table>
+      <thead>
         <tr>
-          <td><%= user.full_name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.role %></td>
+          <th class="table-dark bg-primary">Name</th>
+          <th class="table-dark bg-primary">Email</th>
+          <th class="table-dark bg-primary">Role</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</p>
+      </thead>
+      <tbody>
+        <% @chapter.members.each do |user| %>
+          <tr>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </p>
+<% else %>
+  <% controller.redirect_to root_path %>
+<% end %>

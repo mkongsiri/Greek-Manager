@@ -1,4 +1,5 @@
-<%= form_with(model: [@chapter, event], local: true) do |form| %>
+<% if current_user.chapter == @chapter %>
+  <%= form_with(model: [@chapter, event], local: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -39,4 +40,7 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+  <% end %>
+<% else %>
+  <% controller.redirect_to root_path %>
 <% end %>

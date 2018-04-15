@@ -1,51 +1,55 @@
-<p id="notice"><%= notice %></p>
+<% if current_user.chapter == @chapter %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @event.event_type %>
-</p>
+  <p>
+    <strong>Type:</strong>
+    <%= @event.event_type %>
+  </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
+  <p>
+    <strong>Date:</strong>
+    <%= @event.date %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @event.name %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @event.description %>
+  </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @event.notes %>
-</p>
+  <p>
+    <strong>Notes:</strong>
+    <%= @event.notes %>
+  </p>
 
-<p>
-  <strong>Attendees:</strong>
-  <table>
-    <thead>
-      <tr>
-        <th class="table-dark bg-primary">Name</th>
-        <th class="table-dark bg-primary">Email</th>
-        <th class="table-dark bg-primary">Role</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @event.attendees.each do |user| %>
+  <p>
+    <strong>Attendees:</strong>
+    <table>
+      <thead>
         <tr>
-          <td><%= user.full_name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.role %></td>
+          <th class="table-dark bg-primary">Name</th>
+          <th class="table-dark bg-primary">Email</th>
+          <th class="table-dark bg-primary">Role</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</p>
+      </thead>
+      <tbody>
+        <% @event.attendees.each do |user| %>
+          <tr>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </p>
 
-<%= link_to 'Edit', edit_chapter_event_path(@event) %> |
-<%= link_to 'Back', chapter_events_path %>
+  <%= link_to 'Edit', edit_chapter_event_path(@event) %> |
+  <%= link_to 'Back', chapter_events_path %>
+<% else %>
+  <% controller.redirect_to root_path %>
+<% end %>

@@ -1,5 +1,9 @@
-<h1>New Event</h1>
+<% if current_user.chapter == @chapter %>
+  <h1>New Event</h1>
 
-<%= render 'form', event: @event %>
+  <%= render 'form', event: @event %>
 
-<%= link_to 'Back', chapter_events_path %>
+  <%= link_to 'Back', chapter_events_path %>
+<% else %>
+  <% controller.redirect_to root_path %>
+<% end %>

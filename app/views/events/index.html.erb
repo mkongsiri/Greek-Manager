@@ -1,40 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% if current_user.chapter == @chapter %>
+  <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+  <h1>Events</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Date</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Notes</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= event.event_type %></td>
-        <td><%= event.date %></td>
-        <td><%= event.name %></td>
-        <td><%= event.description %></td>
-        <td><%= event.notes %></td>
-        <% if AttendanceSignup.exists?(user: current_user) %>
-          <td><%= link_to 'Cancel Sign Up', chapter_event_signup_path(@chapter, event), method: :delete %></td>
-        <% else %>
-          <td><%= link_to 'Sign Up', chapter_event_signup_path(@chapter, event) %></td>
-        <% end %>
-        <td><%= link_to 'Show', chapter_event_path(@chapter, event) %></td>
-        <td><%= link_to 'Edit', edit_chapter_event_path(@chapter, event) %></td>
-        <td><%= link_to 'Destroy', chapter_event_path(@chapter, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Notes</th>
+        <th colspan="4"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= event.event_type %></td>
+          <td><%= event.date %></td>
+          <td><%= event.name %></td>
+          <td><%= event.description %></td>
+          <td><%= event.notes %></td>
+          <% if AttendanceSignup.exists?(user: current_user) %>
+            <td><%= link_to 'Cancel Sign Up', chapter_event_signup_path(@chapter, event), method: :delete %></td>
+          <% else %>
+            <td><%= link_to 'Sign Up', chapter_event_signup_path(@chapter, event) %></td>
+          <% end %>
+          <td><%= link_to 'Show', chapter_event_path(@chapter, event) %></td>
+          <td><%= link_to 'Edit', edit_chapter_event_path(@chapter, event) %></td>
+          <td><%= link_to 'Destroy', chapter_event_path(@chapter, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Event', new_chapter_event_path(@chapter) %>
+  <br>
+
+  <%= link_to 'New Event', new_chapter_event_path(@chapter) %>
+<% else %>
+  <% controller.redirect_to root_path %>
+<% end %>
