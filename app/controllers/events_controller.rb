@@ -63,17 +63,18 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    def set_chapter
-      @chapter = Chapter.find(params[:chapter_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:chapter_id, :event_type, :date, :name, :description, :notes)
-    end
+  def set_chapter
+    @chapter = Chapter.find(params[:chapter_id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:chapter_id, :event_type, :date, :name, :description, :notes)
+  end
 end

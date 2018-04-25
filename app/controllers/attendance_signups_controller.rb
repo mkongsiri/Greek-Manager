@@ -1,5 +1,5 @@
 class AttendanceSignupsController < ApplicationController
-before_action :set_user, :set_event, only: [:create, :destroy]
+  before_action :set_user, :set_event, only: [:create, :destroy]
 
   def new
     @signup = AttendanceSignup.new
@@ -8,11 +8,7 @@ before_action :set_user, :set_event, only: [:create, :destroy]
   def create
     @signup = AttendanceSignup.create(user: @user, event: @event)
 
-    if @signup.save
-      redirect_to root_path
-    else
-      redirect_to root_path
-    end
+    redirect_to root_path
   end
 
   def destroy
