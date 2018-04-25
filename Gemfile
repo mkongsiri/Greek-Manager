@@ -42,6 +42,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'rubocop', '0.52.1'
 end
 
 group :development do
