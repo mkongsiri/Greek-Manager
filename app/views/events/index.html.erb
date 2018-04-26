@@ -3,15 +3,15 @@
 
   <h1>Events</h1>
 
-  <table>
+  <table class="table table-hover">
     <thead>
       <tr>
-        <th>Type</th>
-        <th>Date</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Notes</th>
-        <th colspan="4"></th>
+        <th class="table-dark bg-primary">Type</th>
+        <th class="table-dark bg-primary">Date</th>
+        <th class="table-dark bg-primary">Name</th>
+        <th class="table-dark bg-primary">Description</th>
+        <th class="table-dark bg-primary">Notes</th>
+        <th class="table-dark bg-primary" colspan="4"></th>
       </tr>
     </thead>
 
@@ -23,14 +23,14 @@
           <td><%= event.name %></td>
           <td><%= event.description %></td>
           <td><%= event.notes %></td>
-          <% if AttendanceSignup.exists?(user: current_user) %>
-            <td><%= link_to 'Cancel Sign Up', chapter_event_signup_path(@chapter, event), method: :delete %></td>
+          <% if AttendanceSignup.exists?(user: current_user, event: event) %>
+            <td><%= link_to 'Cancel Sign Up', chapter_event_signup_path(@chapter, event), method: :delete, class: 'table btn' %></td>
           <% else %>
-            <td><%= link_to 'Sign Up', chapter_event_signup_path(@chapter, event) %></td>
+            <td><%= link_to 'Sign Up', chapter_event_signup_path(@chapter, event), class: 'table btn' %></td>
           <% end %>
-          <td><%= link_to 'Show', chapter_event_path(@chapter, event) %></td>
-          <td><%= link_to 'Edit', edit_chapter_event_path(@chapter, event) %></td>
-          <td><%= link_to 'Destroy', chapter_event_path(@chapter, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', chapter_event_path(@chapter, event), class: 'table btn' %></td>
+          <td><%= link_to 'Edit', edit_chapter_event_path(@chapter, event), class: 'table btn' %></td>
+          <td><%= link_to 'Destroy', chapter_event_path(@chapter, event), method: :delete, data: { confirm: 'Are you sure?' }, class: 'table btn' %></td>
         </tr>
       <% end %>
     </tbody>
@@ -38,7 +38,7 @@
 
   <br>
 
-  <%= link_to 'New Event', new_chapter_event_path(@chapter) %>
+  <%= link_to 'New Event', new_chapter_event_path(@chapter), class: 'btn btn-success' %>
 <% else %>
   <% controller.redirect_to root_path %>
 <% end %>
